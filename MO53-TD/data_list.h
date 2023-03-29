@@ -4,7 +4,7 @@
 
 #include <vector>
 #include <string>
-//test//
+
 class list_element {
     double _value;
     list_element *_prev;
