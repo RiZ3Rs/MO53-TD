@@ -32,16 +32,37 @@ class values_list {
 public:
     values_list(): _head(nullptr), _tail(nullptr) {}
     values_list(const values_list &other);
-    ~values_list() {clear_list();}
+    ~values_list() {clear();}
     values_list &operator=(const values_list &other);
 
-    void clear_list();
+    void clear();
     void push_back(double v); // Always add at the end
     void pop_element(); // Remove last element
     size_t size()const;
     double get_value(size_t position)const;
 
     void sort_list(bool ascending);
+
+    class iterator {
+    public:
+        explicit iterator(list_element* node) : current(node) {}
+
+        double operator*() const {
+            return current->get_value();
+        }
+
+        iterator& operator++() {
+            current = current->get_next();
+            return *this;
+        }
+
+        bool operator!=(const iterator& other) const {
+            return current != other.current;
+        }
+
+    private:
+        list_element* current;
+    };
 };
 
 class data_list {
@@ -49,7 +70,7 @@ class data_list {
 public:
     data_list();
     data_list(const data_list &other);
-    ~data_list() {_values.clear_list();}
+    ~data_list() {_values.clear();}
 
     // Input methods
     void from_text(const std::string &source);
