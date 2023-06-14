@@ -5,6 +5,8 @@
 #include <vector>
 #include <string>
 
+#define nullptr NULL
+
 class list_element {
     double _value;
     list_element *_prev;
