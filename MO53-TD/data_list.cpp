@@ -1,5 +1,6 @@
 #include "data_list.h"
 #include <fstream>
+#include <stdexcept>
 #include <exception>
 #include <array>
 #include <iostream>
