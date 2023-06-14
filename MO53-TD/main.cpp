@@ -26,6 +26,6 @@ int main() {
               mgr.make_calculation(AVG),
               mgr.make_writer(TEXT)};
     p.execute();
-    mgr.clear_resources();
+    mgr.clear_resources(data.txt);
     return 0;
 }*/
