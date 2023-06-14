@@ -10,18 +10,24 @@ using namespace std;
 data_table::data_table() {
 }
 
-void data_table::from_text(const std::string &source) {
+void data_table::from_text(const std::string& source) {
     _table.clear();
     ifstream f{source};
     if (f.is_open()) {
         array<char, 100> buffer;
         while (f.getline(&buffer[0], 100)) {
-            _table.push_back(stold(string{buffer.data()}));
+            try {
+                _table.push_back(stold(string{buffer.data()}));
+            } catch (const std::invalid_argument& e) {
+                // Handle the invalid entry (e.g., print a warning, skip the entry)
+                std::cerr << "Invalid entry: " << buffer.data() << std::endl;
+            }
         }
     } else {
         throw ios_base::failure("File cannot be opened for reading.");
     }
 }
+
 
 void data_table::from_binary(const std::string &source) {
     _table.clear();
