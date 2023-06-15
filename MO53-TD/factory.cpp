@@ -5,22 +5,31 @@ using namespace std;
 factory::factory()
 {
 }
+
 factory::~factory()
 {
 }
-calculation* :: calculation_factory()
+
+calculation* factory::calculation_factory()
 {
- return new calculation();
+    // Create and return a new instance of calculation
+    return new calculation();
 }
-storage_type* :: storage_type_factory()
+
+storage_type* factory::storage_type_factory()
 {
+    // Create and return a new instance of storage_type
     return new storage_type();
 }
-loader* :: loader_factory()
+
+loader* factory::loader_factory()
 {
+    // Create and return a new instance of loader
     return new loader();
 }
-writer* :: writer_factory()
+
+writer* factory::writer_factory()
 {
+    // Create and return a new instance of writer
     return new writer();
 }
